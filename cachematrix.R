@@ -18,16 +18,16 @@
 ##   $getInverse()         - gets cached inverse matrix (might be NULL)
 ##   $setInverse(matrix()) - sets cached inverse matrix
 makeCacheMatrix <- function(x = matrix()) {
-        inverse <- NULL
+        inverse <- NULL  ## Our matrix inverse cache
         
         get <- function() x
-        set <- function(y) {
-                x <<- y
+        set <- function(newx) {
+                x <<- newx
                 inverse <<- NULL
         }
         getInverse <- function() inverse
-        setInverse <- function(inv = matrix()) {
-                inverse <<- inv
+        setInverse <- function(newinverse = matrix()) {
+                inverse <<- newinverse
         }
         
         list(set = set, get = get,
