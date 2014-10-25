@@ -35,12 +35,11 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## cacheSolve(x, ...) - Accepts a makeCacheMatrix and sets the matrix inverse if not already set.
 cacheSolve <- function(x, ...) {
-        inv <- x$getInverse()
-        if(!is.null(inv)) {
+        if(is.null(x$getInverse())) {
+                x$setInverse(solve(x$get()))
+        } else {
                 message("getting cached inverse matrix")
-                return(inv)
         }
-        x$setInverse(solve(x$get()))
         x$getInverse()
 }
         
